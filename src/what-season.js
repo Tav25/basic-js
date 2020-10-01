@@ -4,7 +4,7 @@ module.exports = function getSeason(date) {
   // console.log(typeof date);
   // return Error;
   // console.log(date.getFullYear());
-  console.log( "*." + toString.call(date)+".*" )
+  // console.log( "*." + toString.call(date)+".*" )
 
   if (date === undefined) return 'Unable to determine the time of year!';
   if (toString.call(date) !== "[object Date]") throw new Error('Error!') ;
@@ -18,7 +18,7 @@ module.exports = function getSeason(date) {
   else if (month < 11) { season = "autumn" }
   else if (month < 12) { season = "winter" }
 
-  console.log(season + "++");
+  // console.log(season + "++");
   return season
 
 };
