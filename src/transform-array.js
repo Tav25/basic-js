@@ -19,7 +19,7 @@ module.exports = function transform(arrIndex) {
       if (arr[x] === "--discard-next" || arr[x] === "--discard-next") {
         arr.splice((x * 1), 1);
         arr.splice((x * 1) + 1, 1);
-        if (arr[x * 1 + 2] === "--double-prev") { console.log("dop") }
+        // if (arr[x * 1 + 2] === "--double-prev") { console.log("dop") }
       }
       else if (arr[x] === "--discard-prev") { newArr.splice((x * 1) - 1, 1); }
       else if (arr[x] === "--double-next" && x !== (arr.length - 1).toString()) { newArr.push(arr[(x * 1) + 1]); }
@@ -29,10 +29,10 @@ module.exports = function transform(arrIndex) {
       newArr.push(arr[x])
     }
   }
-  console.log(`-----------------------------
-in: [${arrIndex}]
-res:[${newArr}]
+//   console.log(`-----------------------------
+// in: [${arrIndex}]
+// res:[${newArr}]
 
-`)//
+// `)//
   return newArr;
 };
