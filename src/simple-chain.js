@@ -1,26 +1,50 @@
 const CustomError = require("../extensions/custom-error");
 
 const chainMaker = {
+  splitter: "~~",
+  chainArr: [],
+
   getLength() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    return this.chainArr.length
   },
+
   addLink(value) {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    this.chainArr.push(value);
+    return this
   },
+
+
   removeLink(position) {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    if (position > 0
+      && position < this.chainArr.length
+      && position % 1 === 0
+    ) {
+      this.chainArr.splice(position - 1, 1);
+    }
+    else { 
+      this.chainArr = []
+      throw new Error('Err') }
+    return this
   },
-  reverseChain() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
-  },
+
+
   finishChain() {
-    throw new CustomError('Not implemented');
+    for (x in this.chainArr) {
+      // console.log(this.chainArr[x])
+      this.chainArr[x] = `( ${this.chainArr[x]} )${this.splitter}`
+    }
+    string = this.chainArr.join('').slice(0, -2)
+    this.chainArr = []
+    return string
+  },
+
+  reverseChain() {
+    this.chainArr.reverse()
+    return this
     // remove line with error and write your code here
-  }
-};
+  },
+}
+
+console.log("-----------------------------------")
 
 module.exports = chainMaker;
