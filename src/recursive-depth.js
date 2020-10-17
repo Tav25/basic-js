@@ -1,22 +1,42 @@
+// let countArray = 1
+// function calculateDepth(array){
+//     for (let x of array){
+//     if (Array.isArray(x)){
+//       countArray++
+//       array = array.flat()
+//       calculateDepth(array)      // 
+//       break
+//       }
+//   }
+//   console.log(countArray)
+// }
+
 const CustomError = require("../extensions/custom-error");
 
 module.exports = class DepthCalculator {
 
-  countArray = 1
+  depth = 1
 
-  calculateDepth(array) {
+  calculateDepth2(array) {
     for (let x of array) {
       if (Array.isArray(x)) {
-        countArray++
+        this.depth++
         array = array.flat()
-        calculateDepth(array)      // 
+        this.calculateDepth2(array)      // 
         break
-      }else{
-
-        let xcv = this.countArray
-        this.countArray = 1
-        return xcv
       }
     }
+    console.log(this.depth)
+    
   }
+  
+  calculateDepth(array) {
+    if (array.length === 0) return 1
+    this.calculateDepth2(array)
+    const x = this.depth
+    this.depth = 1
+    return x
+  }
+
+
 }
